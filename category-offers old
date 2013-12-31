@@ -1,0 +1,32 @@
+<?php get_header(); ?>
+<?php function limit_words($string, $word_limit) { $words = explode(" ",$string); return implode(" ",array_splice($words,0,$word_limit)); } ?>
+<?php $keywords = $_GET['keywords']; ?>
+<?php include('bookbutton.php'); ?>
+     <div id="container">
+          <div class="destinationholder">
+               <h1 class="topheading"><?php single_cat_title( $prefix = '', $display = true ); ?></h1>
+               <div class="searchleft"><?php include('sidebar-3.php'); ?></div>
+               <div class="searchrightholder">
+                    <div class="searchright">                         
+                         <?php while (have_posts()) : the_post(); ?>
+                         <?php $rows = get_field('offers'); if ($rows) { foreach ($rows as $row) { ?>
+                         <div class="fff">
+                              <div class="destinationslistimage"><a href="<?php the_permalink(); ?>#offers"><?php the_post_thumbnail(); ?></a></div>   
+                              <div class="destinationlisttext">
+                                   <div class="ggg"><?php $content1 = $row['offer_heading']; echo limit_words($content1,15); ?></div>
+                                   <div class="hhh"><?php the_title(); ?></div>
+                                   <div class="iii"><?php the_field('destination'); ?></div>
+                                   <a class="morelink" href="<?php the_permalink(); ?>#offers">Read more reviews</a>
+                              </div>
+                         </div>
+                         <?php break;   } } ?>
+                         <div class="clearleft"></div> 
+                         <?php endwhile; ?>
+                    </div>
+                    <?php include('monthpicks.php'); ?>
+               </div>
+               <div class="clearleft"></div>
+          </div>
+     </div>
+</div>
+<?php get_footer(); ?>
