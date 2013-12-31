@@ -1,0 +1,225 @@
+
+.parallaxholder {
+	width:900px;
+	height:3509px;
+
+}
+
+
+.searchbox3 {
+background: #fff;
+border:none;
+margin-top:0px;
+border-radius: 0px;
+padding:0;
+line-height: 44px;
+height:44px;
+color:#a5aaae;
+font-size:28px;
+width:340px;
+padding:3px;
+font-family:'Avenir LT W01 35 Light';
+}
+
+.girl1 {
+	position: absolute;
+	margin-left: 20px;
+	margin-top: 360px;
+	background-image: url('../img/parallax-elements/girl1.png');
+	background-repeat:no-repeat;
+	width:300px;
+	height:400px;
+}
+
+.fish1 {
+	position: absolute;
+	margin-left: 800px;
+	margin-top: 700px;
+	background-image: url('../img/parallax-elements/fish1.png');
+	background-repeat:no-repeat;
+	width:100px;
+	height:2679px;
+}
+
+.fishshowl1 {
+	position: absolute;
+	margin-left: 20px;
+	margin-top: 800px;
+	background-image: url('../img/parallax-elements/fishshowl1.png');
+	background-repeat:no-repeat;
+	width:400px;
+	height:1979px;
+}
+
+.girl2 {
+	position: absolute;
+	margin-left: 460px;
+	margin-top: 800px;
+	background-image: url('../img/parallax-elements/girl2.png');
+	background-repeat:no-repeat;
+	width:600px;
+	height:1779px;
+}
+
+.starfish1 {
+	position: absolute;
+	margin-left: 700px;
+	margin-top: 1300px;
+	background-image: url('../img/parallax-elements/starfish1.png');
+	background-repeat:no-repeat;
+	width:220px;
+	height:2079px;
+}
+
+.fishshowl2 {
+	position: absolute;
+	margin-left: 20px;
+	margin-top: 900px;
+	background-image: url('../img/parallax-elements/fishshowl2.png');
+	background-repeat:no-repeat;
+	width:600px;
+	height:1679px;
+}
+
+.turtle1 {
+	position: absolute;
+	margin-left: -30px;
+	margin-top: 1550px;
+	background-image: url('../img/parallax-elements/turtle1.png');
+	background-repeat:no-repeat;
+	width:500px;
+	height:1800px;
+}
+
+.divers1 {
+	position: absolute;
+	margin-left: 720px;
+	margin-top: 1250px;
+	background-image: url('../img/parallax-elements/divers1.png');
+	background-repeat:no-repeat;
+	width:250px;
+	height:1800px;
+}
+
+.bubbles1 {
+	position: absolute;
+	margin-left: 220px;
+	margin-top: 650px;
+	background-image: url('../img/parallax-elements/bubbles1.png');
+	background-repeat:no-repeat;
+	width:500px;
+	height:2900px;
+}
+
+
+
+.contentbox {
+	font-size:14px;
+	font-family:'Avenir LT W01 85 Heavy';
+	position: absolute;
+	background: url('../img/parallax-elements/contentbak.png');
+	letter-spacing: 2px;
+}
+
+.contentbox1 {
+	width:460px;
+	padding: 20px;
+	margin-left: 370px;
+	margin-top: 920px;
+}
+
+.contentbox2 {
+	width:190px;
+	height:160px;
+	padding: 20px;
+	margin-left: 100px;
+	margin-top: 1220px;
+	text-align: center;
+}
+
+.contentbox3 {
+	width:460px;
+	height:160px;
+	padding: 20px;
+	margin-left: 100px;
+	margin-top: 1490px;
+}
+
+.contentbox4 {
+	width:190px;
+	padding: 20px;
+	margin-left: 640px;
+	margin-top: 1490px;
+	text-align: center;
+}
+
+.contentbox5 {
+position: absolute;
+	width:190px;
+	height:160px;
+	margin-left: 100px;
+	margin-top: 1990px;
+}
+
+.contentbox6 {
+	width:190px;
+	padding: 20px;
+	margin-left: 350px;
+	margin-top: 1990px;
+	text-align: center;
+}
+
+.contentbox7 {
+	width:460px;
+	padding: 20px;
+	margin-left: 370px;
+	margin-top: 2290px;
+}
+.inspireme {
+	position: absolute;
+	margin-left: 85px;
+	margin-top: 200px;
+	
+}
+.work {
+	position: absolute;
+	margin-left: 560px;
+	margin-top: 200px;
+	
+}
+.followme {
+	position: absolute;
+	margin-left: 285px;
+	margin-top: 480px;
+	
+}
+.luxury {
+	position: absolute;
+	margin-left: 700px;
+	margin-top: 490px;
+	font-size: 14px;
+	color:#000;
+	font-family:'Avenir LT W01 35 Light';
+	text-transform:uppercase;
+}
+.search1 {
+	position: absolute;
+	margin-left: 80px;
+	margin-top: 120px;
+	width:700px;
+	height:100px;
+	font-size: 38px;
+	color:#fff;
+	font-family:'Avenir LT W01 35 Light';
+}
+
+.search2 {
+	position: absolute;
+	margin-left: 80px;
+	margin-top: 3100px;
+	width:700px;
+	height:100px;
+	font-size: 38px;
+	color:#fff;
+	font-family:'Avenir LT W01 35 Light';
+}
