@@ -1,0 +1,53 @@
+<form action="<?php bloginfo('url'); ?>/offers-search-results/" method="get" name="mainsearch" id="mainsearch">
+	<div class="abc"><img src="<?php bloginfo('template_url'); ?>/img/searchbutton2.png" width="27" /></div>
+	<div class="abc1">
+		<input name="keywords" type="text" class="searchbox2" value="NOT WHAT YOU ARE LOOKING FOR?" onfocus="(this.value == 'NOT WHAT YOU ARE LOOKING FOR?') && (this.value = '')"
+		onblur="(this.value == '') && (this.value = 'NOT WHAT YOU ARE LOOKING FOR?')" />
+	</div>
+	<div class="abc2">FLIGHT TIME IN HOURS</div>
+	<table>
+		<tr class="abc3">
+			<td class="abc-td"><3 hrs</td>
+			<td class="abc-td1"><input name="flight1" type="radio" value="1" ></td>
+		</tr>
+		<tr class="abc3">
+			<td>3-6 hrs</td>
+			<td class="abc-td1"><input name="flight1" type="radio" value="2" ></td>
+		</tr>
+		<tr class="abc3">
+			<td>6+ hrs</td>
+			<td class="abc-td1"><input name="flight1" type="radio" value="3" checked ></td>
+		</tr>
+	</table>
+	<div class="abc4">DO YOU NEED CHILDCARE <br>FOR UNDER 3's?</div>
+	<table>
+		<tr class="abc3">
+			<td class="abc-td2"><input name="threeyears" type="radio" value="yes" /></td>
+			<td class="abc-td1">YES</td>
+			<td class="abc-td2"><input name="threeyears" type="radio" value="no" checked="checked" /></td>
+			<td class="abc-td1">NO</td>
+		</tr>
+	</table>
+	<div class="abc5">BOARD</div>
+	<table class="abc6">
+		<tr class="abc3">
+			<td class="abc-td">ANY BOARD</td>
+			<td class="abc-td1"><input name="board4" type="checkbox" value="4" /></td>
+		</tr>
+		<tr class="abc3">
+			<td>FULL BOARD</td>
+			<td class="abc-td1"><input name="board3" type="checkbox" value="3" /></td>
+		</tr>
+		<tr class="abc3">
+			<td>OWN KITCHEN</td>
+			<td class="abc-td1"><input name="board6" type="checkbox" value="6" /></td>
+		</tr>
+	</table>
+	<input name="" type="image" src="<?php bloginfo('template_url'); ?>/img/searchsubmit.png" width="70" />
+</form>
+<div class="abc5">OR BROWSE...</div>
+<a href="<?php bloginfo('url'); ?>/hotel/offers/" class="searchlinks">OFFERS</a>
+<a href="<?php bloginfo('url'); ?>/hotel/destination" class="searchlinks">DESTINATIONS</a>
+<a href="<?php bloginfo('url'); ?>/collections" class="searchlinks">COLLECTIONS</a>
+<a href="<?php bloginfo('url'); ?>/hotels" class="searchlinks">ALL HOTELS</a>
+<a href="<?php bloginfo('url'); ?>/inspire-me" class="searchlinks">RECOMMENDATIONS</a>
