@@ -1,0 +1,195 @@
+<?php get_header(); ?>
+   <div id="wrap">
+   
+<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+   <div class="row s-dest">
+      <div class="col3">
+         <h1><?php the_title(); ?></h1>    
+         <h2 class="subtitle">Luxury Family Hotels In <?php the_title(); ?></h2>
+         <?php $mycat = get_the_title(); $currentcat = "hotels-$mycat"; ?>
+        <select name="hotellist" id="hotellist" onChange='document.location.href=this.options[this.selectedIndex].value;'>
+            <option value=""><?php echo attribute_escape(__('VIEW OUR HOTELS')); ?></option>
+               <?php query_posts(array('showposts' => -1, 'category_name' => $currentcat )); if (have_posts()) : while (have_posts()) : the_post(); ?>
+            <option value="<?php echo get_permalink($post->ID);?>" ); ?><?php the_title(); ?></option>
+            <?php endwhile; endif; wp_reset_query(); ?>
+         </select>
+      </div>
+      
+      <div class="col3 mar">
+         <div class="small-text"><?php the_content(); ?></div>
+      </div>
+      
+      <div class="col3">
+         <img alt="about2" src="<?php the_field('destination_image'); ?>" width="250" height="122" alt="" />
+      </div>
+   
+   
+   </div> <!-- row end -->
+   
+   <div class="map-wrap">
+      <img src="<?php the_field('map'); ?>" width="780" height="404" alt="uk - <?php the_title(); ?>" />
+         <p class="flight-time">
+            FLIGHT TIME
+            <img src="<?php bloginfo('template_url'); ?>/img/planeto.png" alt="" width="14"/>
+            <span><?php the_field('flight_time_to'); ?></span>
+            <img src="<?php bloginfo('template_url'); ?>/img/planefrom.png" alt="" width="14"/>
+            <span><?php the_field('flight_time_from'); ?></span>
+         </p> <!-- flight time end -->
+         
+         <div class="our-destinations">
+            OUR DESTINATIONS
+            <select name="destinations" id="destinations" onChange='document.location.href=this.options[this.selectedIndex].value;'>
+               <option value=""><?php echo attribute_escape(__('Select Destination')); ?></option>
+               <?php query_posts(array('showposts' => -1, 'tag' => 'location')); if (have_posts()) : while (have_posts()) : the_post(); ?>
+                  <option value="<?php echo get_permalink($post->ID);?>" ); ?><?php the_title(); ?></option>
+               <?php endwhile; endif; wp_reset_query(); ?>
+            </select> 
+         </div>
+   </div> <!-- mar wrap end -->
+   
+
+<div class="destholder4">
+   <div class="destflightholder">
+      <div class="box" style="background:#1b2229;overflow:hidden">
+         <p>TIME DIFFERENCE<span>GMT <?php the_field('time_difference'); ?> hrs</span></p>
+         <div id="topclock1">
+            <ul id="clock">  
+               <li id="sec"></li>
+               <li id="hour"></li>
+               <li id="min"></li>
+            </ul>
+            <div class="clocktitles">LONDON</div>
+         </div>
+         <div id="topclock2">
+            <ul id="clock">  
+               <li id="sec2"></li>
+               <li id="hour2"></li>
+               <li id="min2"></li>
+            </ul>
+            <div class="clocktitles"><?php the_title(); ?></div>
+         </div> 
+      </div>           
+   </div>  
+</div> <!-- destholder4 end -->
+      
+<div class="destholder5">
+   <div class="destholderinner5a">
+      <div class="destflightholder">
+         CURRENT TEMPERATURE
+         <div class="currenttemp">
+                              <?php $woeid=get_field('weather_id'); ?>
+                              <?php echo processWeather('http://xml.weather.yahoo.com/forecastrss?w='.$woeid.'&u=c'); ?>
+                         </div>           
+      </div>
+   </div> <!-- destholderinner5a end -->
+
+   <div class="destholderinner5b">
+      <div class="destflightholder">
+         LANGUAGE<span><?php the_field('language'); ?></span>
+      </div>
+   </div> <!-- destholderinner5b end -->
+</div> <!-- destholder5 end -->
+          
+<div class="destholder5">
+   <div class="destholderinner5a">
+      <div class="destflightholder">
+         <p>MAIN CURRENCY</p>
+         <span><?php the_field('main_currency_text'); ?></span>
+      </div>
+      <div class="destflightholder destflightholder1">
+         <p>VISA REQUIRED</p>
+         <span>
+            <?php if (get_field('visa_required') =="1") { ?>
+            Yes
+            <?php } else { ?>
+            No
+            <?php } ?>
+         </span>
+      </div>
+      <div class="currencybig"><?php the_field('main_currency'); ?></div>
+   </div> <!-- destholderinner5a end -->
+
+   <div class="destholderinner5b">
+      <div class="destflightholder">
+         BEST TIME TO GO<span><?php the_field('best_time'); ?></span>
+      </div>
+   </div> <!-- destholderinner5b end -->
+</div> <!-- destholder5 end -->
+      
+<?php endwhile; endif; ?>   
+             
+                             
+
+          
+                  
+               
+
+   </div> <!-- wrap end -->
+   
+<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/destinations.js"></script>
+<script>
+$(document).ready(function() {         
+     setInterval( function() {
+     var seconds = new Date().getSeconds();
+     var sdegree = seconds * 6;
+     var srotate = "rotate(" + sdegree + "deg)";              
+     $("#sec2").css({"-moz-transform" : srotate, "-webkit-transform" : srotate, "-ms-transform" : srotate});                  
+     }, 1000 );         
+     setInterval( function() {
+     var hours = new Date().getHours() <?php the_field('time_difference'); ?>;
+     var mins = new Date().getMinutes();
+     var hdegree = hours * 30 + (mins / 2);
+     var hrotate = "rotate(" + hdegree + "deg)";              
+     $("#hour2").css({"-moz-transform" : hrotate, "-webkit-transform" : hrotate, "-ms-transform" : hrotate});                  
+     }, 1000 );        
+     setInterval( function() {
+     var mins = new Date().getMinutes();
+     var mdegree = mins * 6;
+     var mrotate = "rotate(" + mdegree + "deg)";              
+     $("#min2").css({"-moz-transform" : mrotate, "-webkit-transform" : mrotate, "-ms-transform" : mrotate});                  
+     }, 1000 );         
+}); 
+</script>   
+<?php 
+function getWeatherRSS($weatherLink){    
+     if ($fp = fopen($weatherLink, 'r')) { 
+     $content = '';         
+     while ($line = fread($fp, 1024)) { 
+     $content .= $line; 
+     } 
+} 
+return $content;   
+} 
+function processWeather($wurl){     
+     $wrss = getWeatherRSS($wurl); 
+     $temp  = '-'; 
+     $tempu = ''; 
+     $city  = '';     
+     if (strlen($wrss)>100){ 
+          $spos = strpos($wrss,'yweather:units temperature="') 
+          + strlen('yweather:units temperature="'); 
+          $epos = strpos($wrss,'"',$spos); 
+     if ($epos>$spos){ 
+          $tempu = substr($wrss,$spos,$epos-$spos); 
+     }  
+     $spos = strpos($wrss,'yweather:wind chill="') 
+     + strlen('yweather:wind chill="'); 
+     $epos = strpos($wrss,'"',$spos); 
+     if ($epos>$spos){ 
+     $temp += substr($wrss,$spos,$epos-$spos); 
+     } else { 
+     $temp = '-'; 
+     } 
+     $spos = strpos($wrss,'yweather:location city="') 
+     + strlen('yweather:location city="'); 
+     $epos = strpos($wrss,'"',$spos); 
+     if ($epos>$spos){ 
+     $city = substr($wrss,$spos,$epos-$spos); 
+     }  
+}      
+return $temp."&deg;".$tempu;     
+} 
+?>     
+   
+
+<?php get_footer(); ?>
