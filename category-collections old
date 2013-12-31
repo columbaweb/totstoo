@@ -1,0 +1,62 @@
+<?php get_header(); ?>
+   <div id="wrap">
+      <h1><?php single_cat_title(''); ?></h1>
+
+      <div class="collection-left">
+         <a href="nanny-too-collections">
+            <img src="http://www.totstoo.com/wp-content/uploads/nanny-too-thumb-large.jpg" width="380" height="162" alt="collection nanny too" />
+	    <p class="collection-title">Nanny Too</p>
+	 </a>
+      </div>
+
+      <div class="collection-right">
+         <a href="luxury-for-less">
+            <img src="http://www.totstoo.com/wp-content/uploads/luxury-for-less-thumb-large.jpg" width="380" height="162" alt="collection luxury for less" />
+	    <p class="collection-title">Luxury For Less</p>
+	 </a>
+      </div>
+
+      <div class="collection-left">
+         <a href="little-gems">
+            <img src="http://www.totstoo.com/wp-content/uploads/little-gems-thumb-large.jpg" width="380" height="162" alt="collection little gems" />
+	    <p class="collection-title">Little Gems</p>
+	 </a>
+      </div>
+
+      <div class="collection-right">
+         <a href="active">
+            <img src="http://www.totstoo.com/wp-content/uploads/active-thumb-large.jpg" width="380" height="162" alt="collection active" />
+	    <p class="collection-title">Active</p>
+	 </a>
+      </div>
+
+      <div class="collection-left">
+         <a href="pregnancy">
+            <img src="http://www.totstoo.com/wp-content/uploads/pregnancy-thumb.jpg" width="380" height="162" alt="collection pregnancy" />
+	    <p class="collection-title">Pregnancy</p>
+	 </a>
+      </div>
+
+      <div class="collection-right">
+         <a href="babymoons">
+            <img src="http://www.totstoo.com/wp-content/uploads/babymoon-thumb1.jpg" width="380" height="162" alt="collection babymoons" />
+	    <p class="collection-title">Babymoons</p>
+	 </a>
+      </div>
+
+      <div class="collection-left">
+         <a href="big-kids">
+            <img src="http://www.totstoo.com/wp-content/uploads/bigkids-thumb.jpg" width="380" height="162" alt="collection big kids" />
+	    <p class="collection-title">Big Kids</p>
+	 </a>
+      </div>
+
+      <div class="collection-right">
+         <a target="_blank" href="http://www.totstooski.com/">
+            <img src="http://www.totstoo.com/wp-content/uploads/ski-thumb.jpg" width="380" height="162" alt="collection ski" />
+	    <p class="collection-title">Ski</p>
+	 </a>
+      </div>
+	
+   </div> <!-- wrap end -->
+<?php get_footer(); ?>
