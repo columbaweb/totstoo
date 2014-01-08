@@ -1,0 +1,159 @@
+<?php
+/** Template Name: search-template-quick-listings **/
+get_header(''); ?>
+
+<?php 
+$quicksearch = $_GET['quicksearch'];
+?>
+
+<?php
+if ($quicksearch <> "QUICK SEARCH") {
+$arg0 = 'tag='.str_replace( ' ', '-', $quicksearch );
+}
+else {
+$arg0 = '';	
+}
+?>
+
+<div class="bookbuttonsearch">
+<a href="/contact"><img src="<?php bloginfo('template_url'); ?>/img/askbutton.png" alt="" width="35" /></a>
+</div>
+<div class="contentframeholder">
+
+<div class="destinationholder">
+
+<div class="topheading">QUICK SEARCH RESULTS</div>
+
+<div class="searchleft">
+<?php require_once('search-left.php'); ?>
+</div>
+
+<div class="searchrightholder">
+<div class="searchright">
+<?php query_posts('orderby=category&order=DESC&'.$arg0); ?>
+
+<?php if ( have_posts() ) : ?>
+
+<?php while(have_posts()) : the_post(); ?>
+<div class="destinationlistholder">
+
+<div class="destinationslistimage">
+<?php if (get_field('destination_image') <>"") { ?>
+<a href="/destination-detail/?destinations=<?php the_ID(); ?>"><img alt="destination <?php the_title(); ?> image" src="<?php the_field('destination_image'); ?>" width="250" height="122"/></a>
+<?php } ?>
+
+<?php if (get_field('main_image') <>"") { ?>
+<a href="<?php the_permalink(); ?>"><img alt="destination <?php the_title(); ?> image" src="<?php the_field('main_image'); ?>" width="250" height="122"/></a>
+<?php }
+else { ?>
+<div style="width:250px;height:122px;"><a href="<?php the_permalink();?>"><?php the_post_thumbnail(array(260,190)); ?></a></div>
+<?php } ?>
+
+</div>
+
+<div class="destinationlisttext">
+<div style="font-size:15px;font-family:'Avenir LT W01 85 Heavy';color:#000;margin-bottom:5px;text-transform:uppercase;"><?php the_title(); ?></div>
+<div style="font-size:13px;font-family:'Avenir LT W01 65 Medium';color:#000;margin-bottom:5px;text-transform:uppercase;"><?php the_field('destination'); ?></div>
+<?php if (get_field('blog_short') <>"") { ?>
+<div style="font-size:13px;font-family:'Avenir LT W01 65 Medium';color:#000;margin-bottom:5px;"><?php the_field('blog_short'); ?><br><br>
+<a href="<?php the_permalink();?>" class="morelink">Read more...</a>
+</div>
+<?php } ?>
+<div style="margin-bottom:5px;">
+
+<!--STAR RATING START-->
+<?php $star=get_field('star_rating');?>
+
+<?php if ($star==1) {?>
+<img src="<?php bloginfo('template_url'); ?>/img/star.png" alt="" width="15" />
+<?php } ?>
+
+<?php if ($star==2) {?>
+<img src="<?php bloginfo('template_url'); ?>/img/star.png" alt="" width="15" />
+<img src="<?php bloginfo('template_url'); ?>/img/star.png" alt="" width="15" />
+<?php } ?>
+
+<?php if ($star==3) {?>
+<img src="<?php bloginfo('template_url'); ?>/img/star.png" alt="" width="15" />
+<img src="<?php bloginfo('template_url'); ?>/img/star.png" alt="" width="15" />
+<img src="<?php bloginfo('template_url'); ?>/img/star.png" alt="" width="15" />
+<?php } ?>
+
+<?php if ($star==4) {?>
+<img src="<?php bloginfo('template_url'); ?>/img/star.png" alt="" width="15" />
+<img src="<?php bloginfo('template_url'); ?>/img/star.png" alt="" width="15" />
+<img src="<?php bloginfo('template_url'); ?>/img/star.png" alt="" width="15" />
+<img src="<?php bloginfo('template_url'); ?>/img/star.png" alt="" width="15" />
+<?php } ?>
+
+<?php if ($star==5) {?>
+<img src="<?php bloginfo('template_url'); ?>/img/star.png" alt="" width="15" />
+<img src="<?php bloginfo('template_url'); ?>/img/star.png" alt="" width="15" />
+<img src="<?php bloginfo('template_url'); ?>/img/star.png" alt="" width="15" />
+<img src="<?php bloginfo('template_url'); ?>/img/star.png" alt="" width="15" />
+<img src="<?php bloginfo('template_url'); ?>/img/star.png" alt="" width="15" />
+<?php } ?>
+<!--STAR RATING END-->
+
+</div>
+
+<div style="font-size:11px;line-height:14px;font-family:'Avenir LT W01 65 Medium';color:#000;margin-bottom:5px;"><?php the_field('short_search_description'); ?></div>
+<?php if (get_field('destination_image') <>"") { ?>
+<a href="/destination-detail/?destinations=<?php the_ID(); ?>" class="morelink">FIND OUT MORE</a>
+<?php } ?>
+<?php if (get_field('main_image') <>"") { ?>
+<a href="<?php the_permalink(); ?>" class="morelink">FIND OUT MORE</a>
+<?php } ?>
+</div>
+
+<div class="clearleft"></div>
+
+</div>
+<?php 
+endwhile; ?>
+
+<?php else : ?>
+
+Sorry, no results this time, please try again
+
+<?php endif; ?>
+
+</div>
+
+
+<div style="height:15px;"></div>
+<div class="monthpicksholder">
+<div style="font-size:14px;font-family:'Avenir LT W01 85 Heavy';color:#fff;">THIS MONTHS PICKS</div>
+<!--RELATIONSHIP LOOP-->
+<div style="width:162px;">
+
+	<ul class="bxslidermonth">
+<?php query_posts('meta_key=months_picks&meta_value=1'); ?>
+	<?php while (have_posts()) : the_post(); ?>
+	    <li style="padding:5px;">
+	    <a href="<?php the_permalink(); ?>"><img src="<?php the_field('main_image'); ?>" alt="" width="162" /></a><br>
+	    <div style="font-size:12px;font-family:'Avenir LT W01 85 Heavy';color:#fff;text-transform:uppercase;"><?php echo the_title(); ?></div>
+	    <div style="font-size:12px;font-family:'Avenir LT W01 35 Light';color:#fff;text-transform:uppercase;"><?php the_field('destination'); ?></div>
+	    <a href="<?php the_permalink(); ?>" class="likelink">Find out more...</a>
+	    </li>
+<?php endwhile; ?>
+	</ul>
+
+
+</div>
+<!--END RELATIONSHIP LOOP-->
+<div id="slidermonth-prev"></div>
+<div id="slidermonth-next"></div>
+
+</div>
+
+<div class="clearleft"></div>
+
+<div style="height:15px;"></div>
+
+</div>
+</div>
+
+</div>
+
+<?php get_footer(); ?>
