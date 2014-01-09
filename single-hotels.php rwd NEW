@@ -1,0 +1,279 @@
+<?php get_header('rwd'); ?>
+
+<div id="afrao">
+   <?php include('bookbutton.php'); ?>
+   <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+        <div class="row">
+             <div class="span12">
+                  <div class="bannerslide">
+                       <?php 
+            $sliderrr = get_field('hotel_slider' );
+            if ($sliderrr == '')
+            { ?>  
+<?php 
+                      $image = wp_get_attachment_image_src(get_field('bannerimage'), 'full'); 
+                      if ($image == '')
+                      { ?>   
+                      <img src="http://212.67.219.132/~totstoo/wp-content/uploads/JA-Jebel-Ali-Beach-Hotel-pool2.jpg" width="" height="" alt="totstoo hotels" />                     
+                      <?php } else { ?>
+                      <img src="<?php echo $image[0]; ?>" alt="<?php get_the_title(get_field('bannerimage')) ?>" />
+                   <?php } ?>
+                                        
+            <?php } else { ?>
+            <?php the_field('hotel_slider'); ?> 
+<?php } ?>
+                      
+                      <div class="hoteltempholder">
+                            <span class="hoteltemp-date"><?php echo date('l');?></span>
+                            <span class="hoteltemp-date1"><?php echo date('F d');?></span>
+                            <div class="hoteltemp">
+                                 <?php $woeid=get_field('weather_id'); ?>
+                                 <?php echo processWeather('http://xml.weather.yahoo.com/forecastrss?w='.$woeid.'&u=c'); ?>
+                            </div>
+                       </div>
+                       <div class="hoteltitleholder">
+                            <span class="hoteltitle"><?php the_title(); ?><span class="hoteltitle1"><?php the_field('destination'); ?></span></span>
+                            <div class="hotelfav">
+                                 <img src="<?php bloginfo('template_url'); ?>/img/heartmint.png" alt="" width="20" /><br>
+                                 <?php wpfp_link() ?>
+                            </div>
+                       </div>
+                  </div>
+             </div>
+        </div> <!--row / top slider end -->
+        
+   <div class="tabs">
+        <div class="row">
+             <div class="desktop"><?php include('scoop.php'); ?></div>
+             <div class="span3">
+                  <div id="sidetabs">
+                       <ul>
+                            <li><a href="#about" class="about-tab">ABOUT THE HOTEL</a></li>
+                            <li><a href="#family" class="family-tab">FAMILY FACTS</a></li>
+                            <li><a href="#reviews" class="reviews-tab">REVIEWS</a></li>
+                            <li><a href="#ask" class="ask-tab">ASK &amp; BOOK</a></li>
+                            <li><a href="#offers" class="offers-tab">OFFERS</a></li>
+                       </ul>
+                       <?php include('sidebar-5.php'); ?>
+                  </div> <!-- sidetabs end -->
+             </div> <!-- span3 end --> 
+                 
+             <div class="span9">
+                  <div id="about">
+                       <h2>About the hotel: <?php the_title(); ?></h2>
+                       <?php the_content(); ?>
+                  </div> <!--about tab end --> 
+                  
+                  <div id="family">
+                       <h2>Family facts: <?php the_title(); ?></h2>
+                            <?php if (get_field('cots') <>"") {  ?>
+                                 <div class="family-fact">
+                                      <img src="<?php bloginfo('template_url'); ?>/img/icons/icon_cot_availability.png" alt="" width="25" />
+                                      <p><?php the_field('cots'); ?></p>
+                                 </div>
+                            <?php } ?>
+                            <?php if (get_field('babysitting') <>"") { ?>
+                                 <div class="family-fact">
+                                      <img src="<?php bloginfo('template_url'); ?>/img/icons/icon_baby_sitting.png" alt="" width="25" />
+                                      <p><?php the_field('babysitting'); ?></p>
+                                 </div>
+                            <?php } ?>
+                            <?php if (get_field('creche_nanny') <>"") { ?>
+                                 <div class="family-fact">
+                                      <img src="<?php bloginfo('template_url'); ?>/img/icons/icon_creche.png" alt="" width="25" />
+                                      <p><?php the_field('creche_nanny'); ?></p>
+                                 </div>
+                            <?php } ?>
+                            <?php if (get_field('kids_club') <>"") { ?>
+                                 <div class="family-fact">
+                                      <img src="<?php bloginfo('template_url'); ?>/img/icons/icon_kids_club.png" alt="" width="25" />
+                                      <p><?php the_field('kids_club'); ?></p>
+                                 </div>
+                            <?php } ?>
+                            <?php if (get_field('pushchair_friendly') <>"") { ?>
+                                 <div class="family-fact">
+                                      <img src="<?php bloginfo('template_url'); ?>/img/icons/icon_pushchairs.png" alt="" width="25" />
+                                      <p><?php the_field('pushchair_friendly'); ?></p>
+                                 </div>     
+                            <?php } ?>
+                            <?php if (get_field('distance_airport') <>"") { ?>
+                                 <div class="family-fact">
+                                      <img src="<?php bloginfo('template_url'); ?>/img/icons/icon_distance_from_airport.png" alt="" width="25" />
+                                      <p><?php the_field('distance_airport'); ?></p>
+                                 </div>
+                            <?php } ?>
+                            <?php if (get_field('distance_medical') <>"") { ?>
+                                 <div class="family-fact">
+                                      <img src="<?php bloginfo('template_url'); ?>/img/icons/icon_distance_from_medical.png" alt="" width="25" />
+                                      <p><?php the_field('distance_medical'); ?></p>
+                                 </div>     
+                            <?php } ?>
+                            <?php if (get_field('childrens_pool') <>"") { ?>
+                                 <div class="family-fact">
+                                      <img src="<?php bloginfo('template_url'); ?>/img/icons/icon_childrens_pool.png" alt="" width="25" />
+                                      <p><?php the_field('childrens_pool'); ?></p>
+                                 </div>     
+                            <?php } ?>
+                            <?php if (get_field('baby_bottle') <>"") { ?>
+                                 <div class="family-fact">
+                                      <img src="<?php bloginfo('template_url'); ?>/img/icons/icon_baby_bottles.png" alt="" width="25" />
+                                      <p><?php the_field('baby_bottle'); ?></p>
+                                 </div>     
+                            <?php } ?>
+                            <?php if (get_field('infant_seats_airport') <>"") { ?>
+                                 <div class="family-fact">
+                                      <img src="<?php bloginfo('template_url'); ?>/img/icons/icon_infant_car_seats.png" alt="" width="25" />
+                                      <p><?php the_field('infant_seats_airport'); ?></p>
+                                 </div>
+                            <?php } ?>
+                            <?php if (get_field('activities_teens') <>"") { ?>
+                                 <div class="family-fact">
+                                      <img src="<?php bloginfo('template_url'); ?>/img/icons/icon_activities_teens.png" alt="" width="25" />
+                                      <p><?php the_field('activities_teens'); ?></p>
+                                 </div>     
+                            <?php } ?>
+                            
+                            <p class="facts-content"><?php the_field('facts_content'); ?></p>
+                            <p class="for-the-kids"><?php the_field('for_the_kids'); ?></p>             
+                  </div> <!-- family tab end -->
+                  
+                  <div id="reviews">
+                       <h2>Reviews: <?php the_title(); ?></h2>
+                       <ul>
+                            <?php 
+                                 $repeater = get_field('reviews');
+                                 $rows = get_field('reviews');
+                                 if($rows)
+                                 {
+                                 foreach( $repeater as $key => $row )
+                                 {
+                                 $column_id[ $key ] = $row['date_added'];
+                                 }
+                                 array_multisort( $column_id, SORT_DESC, $repeater );
+                                 foreach( $repeater as $row )
+                                 { ?>
+                                 <li>
+                                      <strong><?php echo $row['reviewer_name']; ?></strong>   
+                                      <strong class="review-date"><?php $date = date_create_from_format('Ymd', $row['date_added']); echo $date->format('d F Y'); ?></strong>   
+                                      <span class="stars"><?php include('starrating.php'); ?></span>   
+                                      <?php echo $row['review_content']; ?>
+                                 </li>
+                            <?php } ?>
+                       </ul>
+                       <?php } else { echo "Please ask our team for the latest reviews, or email your review to us.";} ?>                      
+                  </div> <!-- reviews tab end -->     
+                  
+                  <div id="ask">
+                       <h2>Ask & Book: <?php the_title(); ?></h2>
+                       <p>Tell us what you're looking for and we'll reply with ideas and suggestions.</p> 
+                  <p>We protect your <a href="/data-protection">private data</a>.</p>
+                  <?php echo do_shortcode('[gravityform id=3 title=false description=false]'); ?> 
+                  
+                       
+                  </div> <!-- ask tab end -->
+                  
+                  <div id="offers">
+                       <h2>Offers: <?php the_title(); ?></h2>
+                       <?php $rows = get_field('offers');
+                            if ($rows) {
+                            foreach ($rows as $row) { ?>                
+                            <?php if ($row['offer_end'] > date("Ymd")) { ?>
+                            <div class="hotelofferholder">
+                                 <p<?php echo $row['offer_heading'];?></p>
+                                 <p><?php echo $row['offer_content'];?></p>
+                                 <?php if ($row['valid_in_school_holidays']<>"") {?>
+                                      <p><strong>Valid in school holidays.</strong></p>
+                                 <?php }?>
+                                 <?php if ($row['minimum_stay']<>"") {?>
+                                      <p><strong>Minimum stay:</strong><?php echo $row['minimum_stay']; ?></p>
+                                 <?php }?>
+                                 <?php if ($row['valid_for_stays_during_from']<>"") {?>
+                                      <p><strong>Valid during:</strong>
+                                           <?php $date = date_create_from_format('Ymd', $row['valid_for_stays_during_from']); echo $date->format('d F Y'); ?>
+                                           -
+                                           <?php $date = date_create_from_format('Ymd', $row['valid_for_stays_during_to']); echo $date->format('d F Y'); ?>
+                                      </p>
+                                      <?php }?>
+                                 <?php if ($row['excluded_stay_periods_from']<>"") {?>
+                                      <p><strong>Excluded stay periods:</strong>
+                                           <?php $date = date_create_from_format('Ymd', $row['excluded_stay_periods_from']); echo $date->format('d F Y'); ?>
+                                           -
+                                           <?php $date = date_create_from_format('Ymd', $row['excluded_stay_periods_to']); echo $date->format('d F Y'); ?>
+                                      </p>
+                                 <?php }?>
+                                 <?php if ($row['room_type']<>"") {?>
+                                      <p><strong>Room type:</strong><?php echo $row['room_type']; ?></p>
+                                 <?php } ?>
+                                 <?php if ($row['book_by_date']<>"") {?>
+                                      <p><strong>Book by:</strong> 
+                                           <?php $date = date_create_from_format('Ymd', $row['book_by_date']); echo $date->format('d F Y'); ?>
+                                      </p>
+                                 <?php }?>
+                                 <?php if ($row['combinable_with_other_offers']<>"") {?>
+                                      <p><strong>Combinable with:</strong><?php echo $row['combinable_with_other_offers']; ?></p>
+                                 <?php } ?>
+                            </div>
+                            <?php }
+                            }
+                            } else { echo "Please ask our team for the best offers.";} ?> 
+                  </div> <!-- offers tab end --> 
+                  
+                  <div class="mob">
+                    <?php include('sidebar-5.php'); ?>
+                    <?php include('scoop.php'); ?>
+                  </div> <!-- mob end -->
+               
+                  <div class="hotel-social"><?php include('socialmedia.php'); ?></div>   
+             </div> <!-- span9 end -->   
+        </div> <!-- row end -->
+   </div> <!-- tabs end -->
+   <?php endwhile; endif; wp_reset_query(); ?>
+   
+   <div class="row">
+        <div class="span12">
+             <?php include('offerslide.php'); ?>
+        </div>     
+   </div>
+
+</div>
+<?php 
+     function getWeatherRSS($weatherLink){     
+       if ($fp = fopen($weatherLink, 'c')) { 
+         $content = '';         
+       while ($line = fread($fp, 1024)) { 
+         $content .= $line; 
+         } 
+       } 
+       return $content;   
+     } 
+     function processWeather($wurl){     
+         $wrss = getWeatherRSS($wurl); 
+         $temp  = '-'; 
+         $tempu = ''; 
+         $city  = '';     
+       if (strlen($wrss)>100){ 
+         $spos = strpos($wrss,'yweather:units temperature="') 
+       + strlen('yweather:units temperature="'); 
+         $epos = strpos($wrss,'"',$spos); 
+       if ($epos>$spos){ 
+         $tempu = substr($wrss,$spos,$epos-$spos); 
+       }  
+         $spos = strpos($wrss,'yweather:wind chill="') 
+       + strlen('yweather:wind chill="'); 
+         $epos = strpos($wrss,'"',$spos); 
+       if ($epos>$spos){ 
+         $temp += substr($wrss,$spos,$epos-$spos); 
+       } else { 
+         $temp = '-'; 
+       } 
+         $spos = strpos($wrss,'yweather:location city="') 
+       + strlen('yweather:location city="'); 
+         $epos = strpos($wrss,'"',$spos); 
+       if ($epos>$spos){ 
+         $city = substr($wrss,$spos,$epos-$spos); 
+       }  
+     }      
+       return $temp."&deg;".$tempu;     
+     } 
+?> 
+<?php get_footer('rwd'); ?>
